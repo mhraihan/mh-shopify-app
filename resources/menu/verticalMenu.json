@@ -1,0 +1,50 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboards",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "dashboard"
+    },
+    {
+      "url": "/shop",
+      "name": "Shop",
+      "icon": "menu-icon tf-icons bx bx-store",
+      "slug": "shop.index"
+    },
+    {
+      "name": "Collections",
+      "icon": "menu-icon tf-icons bx bx-layout",
+      "slug": "collections",
+      "submenu": [
+        {
+          "url": "collections",
+          "name": "All Collections",
+          "slug": "collections.index"
+        },
+        {
+          "url": "collections/create",
+          "name": "Create Collections",
+          "slug": "collections.create"
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "icon": "menu-icon tf-icons bx bx-purchase-tag",
+      "slug": "products",
+      "submenu": [
+        {
+          "url": "products",
+          "name": "All Products",
+          "slug": "products.index"
+        },
+        {
+          "url": "products/create",
+          "name": "Create Product",
+          "slug": "products.create"
+        }
+      ]
+    }
+  ]
+}
