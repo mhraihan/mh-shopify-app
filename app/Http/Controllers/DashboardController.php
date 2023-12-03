@@ -50,6 +50,7 @@ class DashboardController extends Controller
                            id
                           title
                           status
+                          descriptionHtml
                           featuredImage {
                             id
                             src
