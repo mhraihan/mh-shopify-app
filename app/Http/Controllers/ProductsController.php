@@ -61,11 +61,11 @@ class ProductsController extends Controller
    */
   public function show(string $id)
   {
-    $collectionId = 'gid://shopify/Product/' . $id;
+    $productId = 'gid://shopify/Product/' . $id;
     // GraphQL query
     $query = <<<GRAPHQL
     query {
-      product(id: "{$collectionId}") {
+      product(id: "{$productId}") {
         id
         title
         descriptionHtml
@@ -87,11 +87,11 @@ class ProductsController extends Controller
    */
   public function edit(string $id)
   {
-    $collectionId = 'gid://shopify/Product/' . $id;
+    $productId = 'gid://shopify/Product/' . $id;
     // GraphQL query
     $query = <<<GRAPHQL
     query {
-      product(id: "{$collectionId}") {
+      product(id: "{$productId}") {
         id
         title
         descriptionHtml
@@ -100,7 +100,7 @@ class ProductsController extends Controller
     GRAPHQL;
     $shop = Auth::user();
     $response = $shop->api()->graph($query);
-//    dd($response);
+    //    dd($response);
     return view('content.products.edit', ["response" => $response]);
   }
 
@@ -118,7 +118,7 @@ class ProductsController extends Controller
   public function destroy(string $id)
   {
     $shop = Auth::user();
-    // Replace with the actual collection ID
+    // Replace with the actual product ID
     $productId = 'gid://shopify/Product/' . $id;
 
     // GraphQL mutation
@@ -162,12 +162,12 @@ class ProductsController extends Controller
     }
 
     if ($request->isMethod('put') || $request->isMethod('patch')) {
-      // GraphQL query to create a new collection
-      $collectionId = 'gid://shopify/Product/' . $id;
+      // GraphQL query to create a new product
+      $productId = 'gid://shopify/Product/' . $id;
       $query = <<<GRAPHQL
         mutation {
             productUpdate(input: {
-                 id: "{$collectionId}",
+                 id: "{$productId}",
                 title: "{$request->input('title')}",
                 descriptionHtml: "{$request->input('description')}",
             }) {
@@ -184,9 +184,9 @@ class ProductsController extends Controller
         }
       GRAPHQL;
       $shop->api()->graph($query);
-      $redirectUrl = getRedirectRoute('products.show', ['collection' => $id]);
+      $redirectUrl = getRedirectRoute('products.show', ['product' => $id]);
     } else {
-      // GraphQL query to create a new collection
+      // GraphQL query to create a new product
       $query = <<<GRAPHQL
         mutation {
             productCreate(input: {

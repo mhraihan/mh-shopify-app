@@ -6,6 +6,7 @@
     $id = explode('/',  $collection['id'])[4];
   @endphp
 @section('content')
+@include("_partials.breadcrumbs",['parent' => "Product",'child' => 'Edit ' . $collection['title']])
   <div class="row">
     <div class="col-12">
       <div class="card mb-4">

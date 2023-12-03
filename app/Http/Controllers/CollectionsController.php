@@ -80,6 +80,7 @@ class CollectionsController extends Controller
                       id
                       title
                        status
+                       descriptionHtml
                         featuredImage {
                           id
                           src
@@ -113,7 +114,7 @@ class CollectionsController extends Controller
     GRAPHQL;
     $shop = Auth::user();
     $response = $shop->api()->graph($query);
-//    dd($response);
+    //    dd($response);
     return view('content.collections.edit', ["response" => $response]);
   }
 
@@ -148,10 +149,10 @@ class CollectionsController extends Controller
     GRAPHQL;
 
     // Execute the mutation
-   $shop->api()->graph($query);
+    $shop->api()->graph($query);
     // Process the response as needed
-     $redirectUrl = getRedirectRoute('collections.index');
-     return redirect($redirectUrl);
+    $redirectUrl = getRedirectRoute('collections.index');
+    return redirect($redirectUrl);
   }
 
   /**
